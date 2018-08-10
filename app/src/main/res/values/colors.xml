@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorGreyLight">#a9a9a9</color>
+    <color name="colorGreyMedium">#686868</color>
+    <color name="colorGreyDark">#585858</color>
+    <color name="colorMediaLabelGrey">#7d000000</color>
+
+    <color name="colorTaskInactive">#686868</color>
+    <color name="colorTaskOpen">#fff39c</color>
+    <color name="colorTaskTravelling">#9cfa93</color>
+    <color name="colorTaskWorking">#e27d7f</color>
+</resources>
