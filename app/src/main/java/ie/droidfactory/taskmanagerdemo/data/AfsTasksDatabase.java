@@ -48,8 +48,7 @@ public abstract class AfsTasksDatabase extends RoomDatabase {
      * create database instance and generate data from asset json file
      */
     private static AfsTasksDatabase buildDatabase(final Context context, final AppExecutors executors){
-        return DB_INSTANCE = Room.databaseBuilder(context,
-                AfsTasksDatabase.class, DB_NAME)
+        return Room.databaseBuilder(context, AfsTasksDatabase.class, DB_NAME)
                 .addCallback(new Callback() {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
@@ -58,6 +57,7 @@ public abstract class AfsTasksDatabase extends RoomDatabase {
                             AfsTasksDatabase database = AfsTasksDatabase.getDatabaseInstance(context, executors);
                             List<AfsTaskEntity> taskList = DataGenerator.getTaskFromAsset(context);
                             insertTasks(database, taskList);
+                            database.setDatabaseCreated();
                         });
                     }
                     @Override
@@ -74,8 +74,7 @@ public abstract class AfsTasksDatabase extends RoomDatabase {
             setDatabaseCreated();
         }
     }
-
-
+    
     private void setDatabaseCreated(){
         isDatabaseCreated.postValue(true);
     }

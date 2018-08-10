@@ -6,13 +6,10 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
 import android.support.annotation.NonNull;
 import android.util.Log;
-
 import java.util.List;
-
 import ie.droidfactory.taskmanagerdemo.TaskManagerApplication;
 import ie.droidfactory.taskmanagerdemo.data.AfsTaskEntity;
 import ie.droidfactory.taskmanagerdemo.data.DataUpdate;
-import ie.droidfactory.taskmanagerdemo.data.TaskType;
 
 public class TaskListViewModel  extends AndroidViewModel{
 
@@ -40,8 +37,8 @@ public class TaskListViewModel  extends AndroidViewModel{
     }
 
     /**
-     * TODO: or not todo? DO!!!! update list and DB here
-     * @return
+     * DB here and return updated observable list
+     * @return observable list
      */
     public LiveData<List<AfsTaskEntity>>  updateTaskWithChanges(AfsTaskEntity taskEntity){
         List<AfsTaskEntity> list=null;
@@ -50,7 +47,7 @@ public class TaskListViewModel  extends AndroidViewModel{
             Log.d(TAG, "observableList size: "+list.size());
 
             list = DataUpdate.getUpdatedTaskList(list, taskEntity);
-            //TODO: update DB:
+            //update DB:
             ((TaskManagerApplication)application).getRepository().updateAllTasksStatus(list);
         }
         mObservableList.setValue(list);

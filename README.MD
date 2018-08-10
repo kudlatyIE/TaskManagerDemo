@@ -14,4 +14,4 @@ v1.1
 implemented room to handle local persistence,
 
 TODO:
-code refactore to modular architecture - implemented dagger2
+code refactore to modular architecture - implement dagger2

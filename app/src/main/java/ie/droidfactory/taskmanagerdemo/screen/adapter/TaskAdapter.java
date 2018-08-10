@@ -28,16 +28,10 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     /**
      * load a new task list
-     * @param taskEntityList
+     * @param taskEntityList tasks
      */
     public void swapTaskList(List<AfsTaskEntity> taskEntityList){
         this.mTskList=taskEntityList;
-        if(taskEntityList!=null) {
-            Log.d(TAG, "swap list size: "+taskEntityList.size());
-//            for(AfsTaskEntity t: taskEntityList){
-//                Log.d(TAG, "task name: "+t.getTaskName()+", "+t.getDateStart()+", "+t.getTaskStatus());
-//            }
-        }
         notifyDataSetChanged();
     }
 
@@ -63,6 +57,7 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         TaskViewHolder taskViewHolder = (TaskViewHolder) holder;
+        taskViewHolder.cardView.setCardBackgroundColor(mContext.getResources().getColor(mTskList.get(position).getStatusColor()));
         taskViewHolder.setTaskItem(mTskList.get(position));
     }
 

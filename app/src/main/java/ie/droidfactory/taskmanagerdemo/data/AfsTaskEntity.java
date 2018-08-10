@@ -72,6 +72,10 @@ public class AfsTaskEntity implements AfsTask{
         return TaskType.valueOf(taskStatus.toUpperCase());
     }
 
+    public int getStatusColor(){
+        return TaskType.valueOf(taskStatus.toUpperCase()).getTaskColor();
+    }
+
     public void setTaskName(String taskName) {
         this.taskName = taskName;
     }

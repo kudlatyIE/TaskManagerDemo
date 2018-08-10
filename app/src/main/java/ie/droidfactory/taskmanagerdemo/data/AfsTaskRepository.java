@@ -48,15 +48,10 @@ public class AfsTaskRepository {
     }
 
     public LiveData<List<AfsTaskEntity>> getAllTasks(){
-        if(observableTaskList.getValue()!=null) Log.d(TAG, "getAllTasks list size: "+observableTaskList.getValue().size());
         return observableTaskList;
     }
 
 
-    /**
-     * TODO: RUN AS ASYNC TASK!!!!!!!!!!!!!
-     * @param list
-     */
     public void updateAllTasksStatus(List<AfsTaskEntity> list){
         new updateAsyncTask(mDatabase).execute(list);
     }

@@ -15,7 +15,6 @@ import ie.droidfactory.taskmanagerdemo.screen.TaskButtonClickCallback;
 
 public class TaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    private static final String TAG = TaskViewHolder.class.getSimpleName();
     private TaskButtonClickCallback callback;
 
     @BindView(R.id.adapter_item_task_name_text)
@@ -41,7 +40,6 @@ public class TaskViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     public void setTaskItem(AfsTaskEntity taskEnityItem){
         this.taskEnity=taskEnityItem;
-        cardView.setCardBackgroundColor(taskEnity.getTaskStatusType().getTaskColor());
         tvTaskName.setText(taskEnity.getTaskName());
         tvTaskStatus.setText(taskEnity.getTaskStatusType().getTaskStatus());
         if(taskEnity.getTaskStatusType().isShowingStatus()){
@@ -55,7 +53,6 @@ public class TaskViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.adapter_item_task_action_button){
-            Log.d(TAG, "onClick position: "+getAdapterPosition());
             if(callback!=null) callback.taskButtonListener(getAdapterPosition(), taskEnity);
         }
     }

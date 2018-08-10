@@ -2,6 +2,7 @@ package ie.droidfactory.taskmanagerdemo.data;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
@@ -14,8 +15,6 @@ public interface AfsTaskDao {
 
     @Query("SELECT * FROM tasks WHERE id=:taskId")
     LiveData<AfsTaskEntity> getTaskById(int taskId);
-
-    //TODO: add SELECT ALL, UPDATE, INSERT, DELETE....
 
     @Query(("SELECT * FROM tasks"))
     LiveData<List<AfsTaskEntity>> getAllTasks();
@@ -31,9 +30,9 @@ public interface AfsTaskDao {
     @Update
     void updateAllTasks(List<AfsTaskEntity> taskEntityList);
 
-//    @Query("DELETE FROM tasks WHERE id=:taskId")
-//    void deleteTask(int taskId);
-//
+    @Delete
+    void deleteTask(AfsTaskEntity taskEntity);
+
 //    @Query("DELETE FROM tasks")
 //    void deleteAllTasks();
 }
