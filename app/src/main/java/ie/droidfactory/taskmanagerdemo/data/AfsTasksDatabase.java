@@ -74,7 +74,7 @@ public abstract class AfsTasksDatabase extends RoomDatabase {
             setDatabaseCreated();
         }
     }
-    
+
     private void setDatabaseCreated(){
         isDatabaseCreated.postValue(true);
     }
